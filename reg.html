@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Booklover</title>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+
+
+        function check(textname) {
+            if (/[ 0-9]+$/.test(textname)) document.getElementById("e_loginname").style.display = "inline";
+            else document.getElementById("e_loginname").style.display = "none";
+        }
+
+        function check1(textname) {
+            if (/[ 0-9]+$/.test(textname)) document.getElementById("e_loginsur").style.display = "inline";
+            else document.getElementById("e_loginsur").style.display = "none";
+        }
+
+        function check2(textname) {
+            if (/[А-Яа-яЁё]+$/.test(textname)) document.getElementById("e_loginmail").style.display = "inline";
+            else document.getElementById("e_loginmail").style.display = "none";
+        }
+
+        function check3(textname) {
+            if (/[А-Яа-яЁё]+$/.test(textname)) document.getElementById("e_loginpass").style.display = "inline";
+            else document.getElementById("e_loginpass").style.display = "none";
+        }
+
+        function check4(textname) {
+            if (/[А-Яа-яЁё]+$/.test(textname)) document.getElementById("e_login").style.display = "inline";
+            else document.getElementById("e_login").style.display = "none";
+        }
+
+        function send() {
+            var name = document.getElementById("name").value;
+            var surname = document.getElementById("surname").value;
+            var mail = document.getElementById("mail").value;
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
+            if (document.getElementById("sex1").checked) {
+                var sex = "Male";
+            } else {
+                var sex = "Female";
+            }
+            var date = document.getElementById("date").value;
+            switch ("") {
+                case name:
+                    document.getElementById("e_loginname").style.display = "inline";
+                    return false;
+                case surname:
+                    document.getElementById("e_loginsur").style.display = "inline";
+                    return false;
+                case mail:
+                    document.getElementById("e_loginmail").style.display = "inline";
+                    return false;
+                case login:
+                    document.getElementById("e_login").style.display = "inline";
+                    return false;
+                case password:
+                    document.getElementById("e_loginpass").style.display = "inline";
+                    return false;
+                case date:
+                    document.getElementById("e_logindate").style.display = "inline";
+                    return false;
+            }
+            document.getElementById("regestr").innerHTML = "<p>" + "First name: " + name + "<br>" + "<br>" + "Last name: " + surname + "<br>" + "<br>" + "Email: " + mail + "<br>" + "<br>" + "Login: " + login + "<br>" + "<br>" + "Password: " + password + "<br>" + "<br>" + "Sex: " + sex + "<br>" + "<br>" + "Date of Birth: " + date + "<br>" + "</p>";
+        }
+
+    </script>
+</head>
+<body>
+
+<div class="window">
+    <div class="head">
+        <div class="head1">
+            <div class="let">
+                <h1><a href="index.html">Booklover
+                    <small>A book is a friend of human, and friends must be chosen carefully.</small>
+                </a></h1>
+            </div>
+            <div class="menu_nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="10.html">10 books</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li class="active"><a href="reg.html">Register</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="hbg"></div>
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                <div class="article">
+
+                    <div class="clr"></div>
+                    <form method="post" id="regestr" onsubmit="return validate(this)" autocomplete="on">
+                        <table>
+                            <tr>
+                                <td><p>First name: </p></td>
+                                <td><p><input type="text" id="name" name="username" maxlength="25"
+                                              onkeyup="check(this.value)" placeholder="Ihor" autofocus/><span
+                                        id="e_loginname"
+                                        style="display: none; color: #c00;">First name is incorrect</span></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Last name: </p></td>
+                                <td><p><input type="text" id="surname" name="usersurname" maxlength="25"
+                                              onkeyup="check1(this.value)" placeholder="Tytarenko"/><span
+                                        id="e_loginsur"
+                                        style="display: none; color: #c00;">Last name is incorrect</span></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Email:</p></td>
+                                <td><p><input type="text" id="mail" name="usermail" maxlength="40"
+                                              onkeyup="check2(this.value)"/><span id="e_loginmail"
+                                                                                  style="display: none; color: #c00;">Email is incorrect</span>
+                                </p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Login: </p></td>
+                                <td><p><input type="text" id="login" name="userlog" maxlength="25"
+                                              onkeyup="check4(this.value)" required/><span id="e_login"
+                                                                                           style="display: none; color: #c00;">Enter login</span>
+                                </p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Password: </p></td>
+                                <td><p><input type="password" id="password" name="userpass" maxlength="25"
+                                              onkeyup="check3(this.value)" required/><span id="e_loginpass"
+                                                                                           style="display: none; color: #c00;">The password is incorrect</span>
+                                </p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Sex: </p></td>
+                                <td><p>Male<input type="radio" id="sex1" name="usersex1" checked/> Female <input
+                                        type="radio" id="sex2" name="usersex1"/></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Date of Birth: </p></td>
+                                <td><p><input type="date" id="date" name="userdate"/><span id="e_logindate"
+                                                                                           style="display: none; color: #c00;">Enter your date of birth</span>
+                                </p></td>
+                            </tr>
+                            <tr>
+                                <td><p><input type="button" name="submit" value="Send" onclick="send()"/></p></td>
+                        </table>
+                    </form>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="sidebar">
+                <div class="gadget">
+                    <h2 class="star"><span>Menu</span></h2>
+                    <div class="clr"></div>
+                    <ul class="sb_menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="10.html">10 books</a></li>
+                        <li><a href="event.html">Events</a></li>
+                        <li><a href="reg.html">Register</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="fbg">
+            <div class="fbg_resize">
+                <div class="col c1">
+                    <h2><span>About us</span></h2>
+                    <img src="images/white.jpg" width="56" height="56" alt=""/>
+                    <p>Тhe who reads books will always control those who watch TV.
+                        Masterpieces of literature are available to everyone!</p>
+                </div>
+
+
+                <div class="col c3">
+                    <h2><span>Contacts</span></h2>
+                    <p>We will be happy to answer any of your questions!</p>
+                    <p><a href="#">jaxmef@gmail.com</a></p>
+                    <p>+380996087243<br>
+                    </p>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

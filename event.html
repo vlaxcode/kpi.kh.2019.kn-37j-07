@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Booklover</title>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script>
+        var last;
+        /* last active tab */
+
+        /* connect handler documentDown clicking on the left mouse button */
+        addHandler(document, 'mousedown', documentDown);
+
+        /* the function adds an event to the object e
+         action handler */
+        function addHandler(e, event, action) {
+            if (document.addEventListener)
+            //for major browsers other not including IE
+                e.addEventListener(event, action, false);
+            else if (document.attachEvent)
+            //for IE
+                e.attachEvent('on' + event, action);
+            else e['on' + event] = action;
+        }
+
+        /* click handler */
+        function documentDown(e) {
+            e = e || event;
+            var target = e.target || e.srcElement;
+            //check if we are on span with the tab class inside the li element
+            if (target.tagName == 'SPAN'
+                && target.className == 'tab'
+                && target.parentNode.tagName == 'LI') {
+                /* if there was no pressing yet, i.e.! last, then we get
+                 an element with id tabs-ul and the first li in it, it will be
+                 last */
+                if (!last) {
+                    last = getElsByTagName(getElById('tabs-ul'), 'li')[0];
+                }
+                // remove the string on from the previous li element from the class
+                removeClass(last, 'on');
+                /* find the block with the content of the tab and delete it
+                 from class string on */
+                removeClass(getElById(last.id.replace('li', 'dd')), 'on');
+                /* as the previous one, set the tab where
+                 clicked */
+                last = target.parentNode;
+                //Add the on line to the class title and bookmark contents
+                addClass(last, 'on');
+                addClass(getElById(last.id.replace('li', 'dd')), 'on');
+            }
+        }
+
+        function getElById(id) {
+            return document.getElementById(id);
+        }
+
+        //gets an array of name elements, inside e
+        function getElsByTagName(e, name) {
+            return e.getElementsByTagName(name);
+        }
+
+        //adds the string name to the element class e
+        function addClass(e, name, index) {
+            if (e.nodeType == 1) {
+                if (index) {
+                    e.className = name;
+                } else e.className += ' ' + name;
+            }
+        }
+
+        //removes the string name from the class of the element e
+        function removeClass(e, name) {
+            if (name) {
+                var sentence = new RegExp('\\s*\\b' + name + '\\b', 'g');
+                e.className = e.className.replace(sentence, '');
+            } else e.className = '';
+        }
+    </script>
+</head>
+<body>
+
+<div class="window">
+    <div class="head">
+        <div class="head1">
+            <div class="let">
+                <h1><a href="index.html">Booklover
+                    <small>A book is a friend of human, and friends must be chosen carefully.</small>
+                </a></h1>
+            </div>
+            <div class="menu_nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="10.html">10 books</a></li>
+                    <li class="active"><a href="event.html">Events</a></li>
+                    <li><a href="reg.html">Register</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="hbg"></div>
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                <div class="article">
+                    <p class="date">2019<span>05/11</span></p>
+                    <h2><span>Giveaway</span></h2>
+                    <div class="clr"></div>
+
+                    <img src="images/128.png" width="605"/>
+                    <p>
+                    <h2>Hey, booklovers! We are launching the largest giveaway of the website's history in which 20 books will be given!
+                    And one more thing: this time we have free worldwide delivery!</h2><br>
+                    <div id="tabs">
+                        <!-- шапка вкладок в виде списка
+                        первый li при выводе страницы включен - class="on"
+                        -->
+                        <ul id="tabs-ul">
+                            <li id="li1" class="on"><span class="tab">1st step</span></li>
+                            <li id="li2"><span class="tab">2nd step</span></li>
+                            <li id="li3"><span class="tab">3rd step</span></li>
+                        </ul>
+                        <!-- содержимое вкладок
+                        первый div при выводе страницы включен - class="mod on"
+                        -->
+                        <div id="dd1" class="mod on"><p>View the prize list</p></div>
+                        <div id="dd2" class="mod"><p><a href="reg.html">Register</a></p></div>
+                        <div id="dd3" class="mod"><p>Wait for the results</p></div>
+                    </div>
+
+                    <b>1st place: Klapka Jerome "Three in a boat, not counting the dogs"<br>
+                        2nd place: Johann Goethe "Faust"<br>
+                        3rd place: Charlotte Bronte "Jane Eyre"<br>
+                        4th place: Dan Brown "The Da Vinci Code"<br>
+                        5th place: Jane Austen "Sense and Sensitivity"<br>
+                        6th place: Thomas Gardi "Tess from the d'Herberville family"<br>
+                        7th place: Robert Stevenson "The Strange History of Dr. Jekyll and Mr. Hyde"<br>
+                        8th place: Victor Hugo "The Man Who Laughs"<br>
+                        9th place: Arthur Golden "Memoirs of a Geisha"<br>
+                        10th place: Friedrich Nietzsche "Thus spoke Zarathustra"<br>
+                        11th place: Marquez Garcia "One Hundred Years of Solitude"<br>
+                        12th place: Daniel Keese "Flowers for Algernon"<br>
+                        13th place: Stephen King "Green Mile"<br>
+                        14th place: Oscar Wilde "Portrait of Dorian Gray"<br>
+                        15th place: Hunter Thompson "Fear and Loathing in Las Vegas"<br>
+                        16th place: Tolkien John Ronald Reuel "The Hobbit"<br>
+                        17th place: Jules Verne "Mysterious Island"<br>
+                        18th place: Emily Bronte "Stormy Pass"<br>
+                        19th place: George Orwell "Animal Farm. Essay"<br>
+                        20th place: Robert Christmas "Best poems"<br></b>
+                    </p>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="sidebar">
+                <div class="gadget">
+                    <h2 class="star"><span>Menu</span></h2>
+                    <div class="clr"></div>
+                    <ul class="sb_menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="10.html">10 books</a></li>
+                        <li><a href="event.html">Events</a></li>
+                        <li><a href="reg.html">Register</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="fbg">
+            <div class="fbg_resize">
+                <div class="col c1">
+                    <h2><span>About us</span></h2>
+                    <img src="images/white.jpg" width="56" height="56" alt=""/>
+                    <p>Тhe who reads books will always control those who watch TV.
+                        Masterpieces of literature are available to everyone!</p>
+                </div>
+
+
+                <div class="col c3">
+                    <h2><span>Contacts</span></h2>
+                    <p>We will be happy to answer any of your questions!</p>
+                    <p><a href="#">jaxmef@gmail.com</a></p>
+                    <p>+380996087243<br>
+                    </p>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
