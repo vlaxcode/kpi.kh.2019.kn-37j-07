@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Booklover</title>
+    <meta name="Ihor Tytarenko" Content="Tytarenko Ihor Valeriyovych">
+
+    <meta Name="keywords" Content="books,booklover,book forum,readers">
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script>
+        window.onload = function my_alert() {
+            var my_date = new Date();
+            var hours = my_date.getHours();
+            var minutes = my_date.getMinutes();
+            var seconds = my_date.getSeconds();
+
+            if (hours < 10) hours = "0" + hours;
+            if (minutes < 10) minutes = "0" + minutes;
+            if (seconds < 10) seconds = "0" + seconds;
+
+            var time = hours + ":" + minutes + ":" + seconds;
+            document.getElementById("clock").value = time;
+            setTimeout(my_alert, 1000);
+        }
+    </script>
+</head>
+<body>
+
+<div class="window">
+    <div class="head">
+        <div class="head1">
+            <div class="let">
+                <h1><a href="index.html">Booklover
+                    <small>A book is a friend of human, and friends must be chosen carefully.</small>
+                </a></h1>
+            </div>
+            <div class="menu_nav">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="10.html">10 books</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="reg.html">Register</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="hbg"></div>
+    <div class="content">
+        <div class="content_resize">
+            <div class="mainbar">
+                <div class="article" id="article">
+                    <form name="my_form" style="position: fixed; left: 95%; top:95%">
+                    <input type="text" id="clock" value="" size="6" readonly/>
+                    </form>
+                    <p class="date">2019<span>05/11</span></p>
+                    <h2><span>— Joseph Brodsky, 1972</span></h2>
+                    <div class="clr"></div>
+
+                    <img src="images/img1.gif" width="605" height="197"/>
+                    <p datetime="2016-11-15T18:18">And if the night I
+                        I looked for the star on the ceiling,<br>
+                        She is, according to the rules of combustion,<br>
+                        He ran on a pillow on the cheek<br>
+                        Hurry, than I am to make a wish.<br></p>
+
+                </div>
+                <div class="article">
+                    <p class="date">2019<span>04/11</span></p>
+                    <h2><span>Carlos Castaneda</span></h2>
+                    <div class="clr"></div>
+                    <img src="images/img2.jpg" width="300" height="350" alt=""/>
+                    <img class="img22" src="images/img22.jpg" width="280" height="350" alt=""/>
+                    <p> All paths are the same: they lead nowhere. <br>
+                        But some have a heart, others have no. <br>
+                        One path gives you Power, the other - destroys you.
+                    </p>
+
+                </div>
+                <div class="article">
+                    <p class="date">2019<span>04/11</span></p>
+                    <h2><span>Carlos Castaneda</span></h2>
+                    <div class="clr"></div>
+                    <img src="images/5.jpg" width="300" height="350" alt=""/>
+                    <img class="img22" src="images/6.jpg" width="280" height="350" alt=""/>
+                    <p> See beauty in ugly, <br>
+                        See rivers in floods, <br>
+                        Who knows how to be happy on weekdays - <br>
+                        He is indeed a happy man. <br>
+                    </p>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="sidebar">
+                <div class="gadget">
+                    <h2 class="star"><span>Menu</span></h2>
+                    <div class="clr"></div>
+                    <ul class="sb_menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="10.html">10 books</a></li>
+                        <li><a href="event.html">Events</a></li>
+                        <li><a href="reg.html">Register</a></li>
+                        <li><a href="contact.html">Contacts</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="fbg">
+            <div class="fbg_resize">
+                <div class="col c1">
+                    <h2><span>About us</span></h2>
+                    <img src="images/white.jpg" width="56" height="56" alt=""/>
+                    <p>Тhe who reads books will always control those who watch TV.
+                        Masterpieces of literature are available to everyone!</p>
+                </div>
+
+
+                <div class="col c3">
+                    <h2><span>Contacts</span></h2>
+                    <p>We will be happy to answer any of your questions!</p>
+                    <p><a href="#">jaxmef@gmail.com</a></p>
+                    <p>+380996087243<br>
+                    </p>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
