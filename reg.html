@@ -64,9 +64,42 @@
                     document.getElementById("e_logindate").style.display = "inline";
                     return false;
             }
-            document.getElementById("regestr").innerHTML = "<p>" + "First name: " + name + "<br>" + "<br>" + "Last name: " + surname + "<br>" + "<br>" + "Email: " + mail + "<br>" + "<br>" + "Login: " + login + "<br>" + "<br>" + "Password: " + password + "<br>" + "<br>" + "Sex: " + sex + "<br>" + "<br>" + "Date of Birth: " + date + "<br>" + "</p>";
+
+            var obj = {
+                "name": name,
+                "surname": surname,
+                "mail": mail,
+                "login": login,
+                "password": password,
+                "date": date,
+                "sex": sex
+            };
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:2490/v1/register", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(obj));
+
+            sleep(200);
+
+            var xhr2 = new XMLHttpRequest();
+            xhr2.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+
+                    document.getElementById("regestr").innerHTML = "<p>" + "First name: " + data.name + "<br>" + "<br>" + "Last name: " + data.surname + "<br>" + "<br>" + "Email: " + data.mail + "<br>" + "<br>" + "Login: " + data.login + "<br>" + "<br>" + "Password: " + data.password + "<br>" + "<br>" + "Sex: " + data.sex + "<br>" + "<br>" + "Date of Birth: " + data.date + "<br>" + "</p>";
+                }
+            };
+            xhr2.open('GET', "http://localhost:2490/v1/last-registered", true);
+            xhr2.send();
         }
 
+        function sleep(ms) {
+            ms += new Date().getTime();
+            while (new Date() < ms){}
+        }
     </script>
 </head>
 <body>
